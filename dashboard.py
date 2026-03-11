@@ -17,7 +17,9 @@ else:
     # logged into the database
     # checking user roles
     if st.session_state["role"] == "superuser":
-        st.write("Logged In as Superuser")
+        st.info("Welcome Superuser")
+        # dashboard for the Superuser
+
     elif st.session_state["role"] == "writer":
         st.write("Logged In as Writer")
     elif st.session_state["role"] == "editor":
