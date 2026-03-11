@@ -1,7 +1,7 @@
 import streamlit as st
 
 from views import login
-from services.auth_service import get_role
+from views import create_post
 
 st.set_page_config(page_title="Static Stream CMS",layout="wide")
 
@@ -71,9 +71,24 @@ else:
                     st.session_state.logged_in = False
                     st.rerun()
 
+        #-------------
+        # Page Route
+        #-------------
         # --- Main Content Logic ---
-        st.header(f"Selection: {st.session_state.current_page}")
-        # Your logic to display different pages goes here
+        #st.header(f"Selection: {st.session_state.current_page}")
+        if st.session_state.current_page == "Insights":
+            st.title("Insights")
+        elif st.session_state.current_page == "Analytics":
+            st.title("Analytics")
+            st.write("Coming soon...")
+        elif st.session_state.current_page == "About":
+            st.title("About")
+            st.write("This CMS was written for the deployment of Beyond Apogee's website"
+                     "by Sudip Vikram Adhikari. It is based on Streamlit. It is in github, "
+                     "open for anyone to make it their own, tweak as they please, so enjoy!")
+        elif st.session_state.current_page == "Create Post":
+            create_post.render()
+
 
     elif st.session_state["role"] == "writer":
         st.write("Logged In as Writer")
